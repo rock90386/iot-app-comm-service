@@ -16,12 +16,14 @@ export function configureServer() {
     type Query {
       "A simple type for getting started!"
       hello: String
+      stepCount: Int
     }
   `;
   // Very simple resolver that returns "world" for the hello query
   const resolvers = {
     Query: {
-      hello: () => "world"
+      hello: () => "world",
+      stepCount: () => 128
     }
   };
   const server = new ApolloServer({
