@@ -21,13 +21,18 @@ export function configureServer() {
       runTimeSegments: [TimeSegment]
       walkTimeSegments: [TimeSegment]
     }
+    type GeoPoint {
+      longitude: String!
+      latitude: String!
+    }
     type Query {
-      "A simple type for getting started!"
+      "iot app comm example service"
       hello: String
       stepCount: Int
       runTime: Int
       walkTime: Int
       activeTimeDetails: TimeDetails
+      location: GeoPoint
     }
   `;
   // Very simple resolver that returns "world" for the hello query
@@ -47,6 +52,12 @@ export function configureServer() {
             {startTime: 600, endTime: 860}, 
             {startTime: 1200, endTime: 1600}
           ]
+        }
+      ),
+      location: () => (
+        { // osaka
+          longitude: "135.69296597528",
+          latitude: "34.77103892591"
         }
       )
 
