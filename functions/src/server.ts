@@ -13,17 +13,43 @@ export function configureServer() {
 
   // Simple graphql schema
   const typeDefs = gql`
+    type TimeSegment {
+      startTime: Int
+      endTime: Int
+    }
+    type TimeDetails {
+      runTimeSegments: [TimeSegment]
+      walkTimeSegments: [TimeSegment]
+    }
     type Query {
       "A simple type for getting started!"
       hello: String
       stepCount: Int
+      runTime: Int
+      walkTime: Int
+      activeTimeDetails: TimeDetails
     }
   `;
   // Very simple resolver that returns "world" for the hello query
   const resolvers = {
     Query: {
       hello: () => "world",
-      stepCount: () => 128
+      stepCount: () => 128,
+      runTime: () => 60,
+      walkTime: () => 5,
+      activeTimeDetails: () => (
+        {
+          runTimeSegments: [
+            {startTime: 360, endTime: 420}, 
+            {startTime: 900, endTime: 960}
+          ],
+          walkTimeSegments: [
+            {startTime: 600, endTime: 860}, 
+            {startTime: 1200, endTime: 1600}
+          ]
+        }
+      )
+
     }
   };
   const server = new ApolloServer({
