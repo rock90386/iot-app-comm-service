@@ -42,7 +42,8 @@ export function configureServer() {
       stepCount: () => 128,
       runTime: () => 60,
       walkTime: () => 5,
-      location: ()=>100,
+      latitude: ()=> "15n",
+      longitude: ()=> "35e",
 
       
       activeTimeDetails: () => (
