@@ -34,14 +34,6 @@ export function configureServer() {
       activeTimeDetails: TimeDetails
       location: GeoPoint
     }
-type GeoPoint {
-
-     longitude: String!
-     latitude: String!
-   }
-type Query {
-    location: GeoPoint
-}
   `;
   // Very simple resolver that returns "world" for the hello query
   const resolvers = {
